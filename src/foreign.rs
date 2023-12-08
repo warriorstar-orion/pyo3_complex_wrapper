@@ -31,6 +31,21 @@ impl Foo {
 
         foo
     }
+
+    pub fn compute(&self) -> String {
+        let mut result = String::new();
+
+        for bars in self.mapping.values() {
+            for bar in bars {
+                for _ in 0..bar.num {
+                    result.push_str(bar.word.as_str());
+                }
+                result.push('\n');
+            }
+        }
+
+        result
+    }    
 }
 
 impl Bar {

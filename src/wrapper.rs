@@ -60,17 +60,7 @@ impl FooWrapper {
     }
    
     pub fn compute(&self, py: Python<'_>) -> PyResult<Py<PyAny>> {
-        let mut result = String::new();
-
-        for bars in self.0.mapping.values() {
-            for bar in bars {
-                for _ in 0..bar.num {
-                    result.push_str(bar.word.as_str());
-                }
-                result.push('\n');
-            }
-        }
-
+        let result = self.0.compute().to_string();
         Ok(result.into_py(py))
     }
 }
